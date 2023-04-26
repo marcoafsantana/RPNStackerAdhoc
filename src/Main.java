@@ -1,5 +1,5 @@
 import calc.RPN;
-import utils.CheckType;
+import stacker.rpn.lexer.Regex;
 import stacker.rpn.Token;
 import stacker.rpn.TokenType;
 
@@ -8,8 +8,6 @@ import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.io.File;
-import java.io.FileNotFoundException;
 
 public class Main {
     public static void main(String[] args) {
@@ -50,22 +48,7 @@ public class Main {
             while (Scanner.hasNextLine()) {
                 String line = Scanner.nextLine().trim();
 
-                Token token;
-
-                if (line.equals("+")) {
-                    token = new Token(TokenType.PLUS, line);
-                } else if (line.equals("-")) {
-                    token = new Token(TokenType.MINUS, line);
-                } else if (line.equals("*")) {
-                    token = new Token(TokenType.STAR, line);
-                } else if (line.equals("/")) {
-                    token = new Token(TokenType.SLASH, line);
-                } else if (CheckType.isStringInt(line)) {
-                    token = new Token(TokenType.NUM, line);
-                } else {
-                    Scanner.close();
-                    throw new RuntimeException("Error: Unexpected character: " + line);
-                }
+                Token token = Regex.getToken(line);
 
                 tokens.add(token);
             }
