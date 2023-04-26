@@ -1,9 +1,15 @@
 import calc.RPN;
 import utils.CheckType;
+import stacker.rpn.Token;
+import stacker.rpn.TokenType;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.List;
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,30 +17,63 @@ public class Main {
         // IntelliJ IDEA suggests fixing it.
         System.out.println("Starting calculator:");
 
-        int result;
-        int input;
-        String operator;
         try {
-            Scanner Scanner = new Scanner(new File("src/Calc1.stk"));
-            RPN Stacker = new RPN();
+            List<Token> tokens = scan();
+            RPN calculator = new RPN();
+            int result;
 
-            while (Scanner.hasNextLine()) {
-                operator = Scanner.nextLine();
+            while (!tokens.isEmpty()) {
+                Token token = tokens.remove(0);
+                System.out.println(token);
 
-                if (CheckType.isStringInt(operator)) {
-                    System.out.println("Number:   " + operator);
-                    input = Integer.parseInt(operator);
-                    Stacker.saveRPN(input);
-                } else {
-                    System.out.println("Operator: " + operator);
-                    Stacker.RpnStacker(operator.charAt(0));
+                if (token.type == TokenType.NUM) {
+                    calculator.saveRPN(token);
+                } else if (token.type != TokenType.NUM) {
+                    calculator.RpnStacker(token);
                 }
             }
 
-            result = Stacker.getResult();
-            System.out.println("Result:  " + result);
+            result = calculator.getResult();
+            System.out.println("\nSaida: " + result + "\n");
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    private static List<Token> scan() throws FileNotFoundException {
+        List<Token> tokens = new ArrayList<>();
+        try {
+            Scanner Scanner = new Scanner(new File("src/Calc1.stk"));
+
+            while (Scanner.hasNextLine()) {
+                String line = Scanner.nextLine().trim();
+
+                Token token;
+
+                if (line.equals("+")) {
+                    token = new Token(TokenType.PLUS, line);
+                } else if (line.equals("-")) {
+                    token = new Token(TokenType.MINUS, line);
+                } else if (line.equals("*")) {
+                    token = new Token(TokenType.STAR, line);
+                } else if (line.equals("/")) {
+                    token = new Token(TokenType.SLASH, line);
+                } else if (CheckType.isStringInt(line)) {
+                    token = new Token(TokenType.NUM, line);
+                } else {
+                    Scanner.close();
+                    throw new RuntimeException("Error: Unexpected character: " + line);
+                }
+
+                tokens.add(token);
+            }
+
+            Scanner.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return tokens;
     }
 }

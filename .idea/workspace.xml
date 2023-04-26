@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff383bee-992e-4506-92be-8ceebc5112dc" name="Changes" comment="Finish Task 1">
+    <list default="true" id="ff383bee-992e-4506-92be-8ceebc5112dc" name="Changes" comment="Update README.md">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Calc1.stk" beforeDir="false" afterPath="$PROJECT_DIR$/src/Calc1.stk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/calc/RPN.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/calc/RPN.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/Stack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Stack.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +88,7 @@
       <option name="presentableId" value="Default" />
       <updated>1682452095234</updated>
       <workItem from="1682452096371" duration="1756000" />
-      <workItem from="1682465001061" duration="3118000" />
+      <workItem from="1682465001061" duration="4377000" />
     </task>
     <task id="LOCAL-00001" summary="Finish Task 1">
       <created>1682467728860</created>
@@ -94,7 +97,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682467728860</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Update README.md">
+      <created>1682468134213</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1682468134213</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -102,6 +112,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Finish Task 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finish Task 1" />
+    <MESSAGE value="Update README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update README.md" />
   </component>
 </project>
