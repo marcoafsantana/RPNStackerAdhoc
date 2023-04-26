@@ -1,17 +1,40 @@
-// Press ⇧ twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import calc.RPN;
+import utils.CheckType;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         // Press ⌥⏎ with your caret at the highlighted text to see how
         // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        System.out.println("Starting calculator:");
 
-        // Press ⌃R or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        int result;
+        int input;
+        String operator;
+        try {
+            Scanner Scanner = new Scanner(new File("src/Calc1.stk"));
+            RPN Stacker = new RPN();
 
-            // Press ⌃D to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing ⌘F8.
-            System.out.println("i = " + i);
+            while (Scanner.hasNextLine()) {
+                operator = Scanner.nextLine();
+
+                if (CheckType.isStringInt(operator)) {
+                    System.out.println("Number:   " + operator);
+                    input = Integer.parseInt(operator);
+                    Stacker.saveRPN(input);
+                } else {
+                    System.out.println("Operator: " + operator);
+                    Stacker.RpnStacker(operator.charAt(0));
+                }
+            }
+
+            result = Stacker.getResult();
+            System.out.println("Result:  " + result);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
     }
 }
